@@ -1,11 +1,11 @@
 Name:           dav1d
-Version:        0.4.0
+Version:        0.5.1
 Release:        1%{?dist}
 Summary:        AV1 cross-platform Decoder
 
 License:        BSD
 URL:            https://code.videolan.org/videolan/dav1d
-Source0:        %url/-/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        %url/-/archive/%{version}/%{name}-%{version}.tar.bz2
 
 BuildRequires:  gcc
 BuildRequires:  nasm
@@ -30,7 +30,7 @@ Requires:       libdav1d%{?_isa} = %{version}-%{release}
 Development files for dav1d, the AV1 cross-platform Decoder.
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %meson --buildtype=release
@@ -51,7 +51,7 @@ Development files for dav1d, the AV1 cross-platform Decoder.
 
 %files -n libdav1d
 %license COPYING doc/PATENTS
-%{_libdir}/libdav1d.so.2*
+%{_libdir}/libdav1d.so.3*
 
 %files -n libdav1d-devel
 %doc %{_host_alias}/doc/html
@@ -60,6 +60,12 @@ Development files for dav1d, the AV1 cross-platform Decoder.
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
+* Tue Nov 19 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.5.1-1
+- Release 0.5.1 (#1765775, #1771993)
+
+* Fri Oct 11 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.5.0-1
+- Release 0.5.0 (#1760765)
+
 * Fri Aug 09 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.4.0-1
 - Release 0.4.0 (#1708919)
 
